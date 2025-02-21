@@ -2,7 +2,8 @@ name: ubuntu-x86
 
 on:
   workflow_dispatch:
-  
+  schedule:
+    - cron: 30 22 * * *
 jobs:
   job1:
     uses: ./.github/workflows/share-ubuntu.yml
