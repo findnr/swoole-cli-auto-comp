@@ -5,6 +5,6 @@ on:
   
 jobs:
   job1:
-    uses: ./.github/workflows/share_ubuntu.yml
+    uses: ./.github/workflows/share-ubuntu.yml
     secrets: 
       CYM_TOKEN: ${{ secrets.CYM_TOKEN }}
