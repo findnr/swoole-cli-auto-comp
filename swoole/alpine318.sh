@@ -39,10 +39,11 @@ exit
 # 检查容器是否存在
 if docker ps -a --format "{{.Names}}" | grep -q "^${CONTAINER_NAME}$"; then
   echo "容器 ${CONTAINER_NAME} 已存在，直接进入执行命令..."
-  docker exec -it $CONTAINER_NAME /bin/sh -c "$CONTAINER_COMMANDS"
+  script -q -c "docker exec -it $CONTAINER_NAME /bin/sh -c '$CONTAINER_COMMANDS'"
 else
   echo "容器 ${CONTAINER_NAME} 不存在，创建新容器并执行命令..."
   docker pull $BASE_IMAGE
   docker run --tty=false -dit --name $CONTAINER_NAME -v $WORK_DIR:/work $BASE_IMAGE /bin/sh
-  docker exec -it $CONTAINER_NAME /bin/sh -c "$CONTAINER_COMMANDS"
+  script -q -c "docker exec -it $CONTAINER_NAME /bin/sh -c '$CONTAINER_COMMANDS'"
+
 fi
