@@ -1,4 +1,4 @@
-name: share ubuntu Template
+name: share-ubuntu
 
 on:
   workflow_call:
