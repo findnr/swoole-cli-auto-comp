@@ -20,12 +20,13 @@ jobs:
       - name: complate swoole
         run: |
           sudo apt update
-          sudo sh swoole/alpine318.sh
+          sudo chmod 777 /mnt
+          sh swoole/alpine318.sh
       - name: move file
         run: |
-          sudo mkdir file
-          sudo mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
-          sudo mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
+          mkdir file
+          mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
+          mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
         with:
