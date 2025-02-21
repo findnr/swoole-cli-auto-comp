@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir file
           mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
-          mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
+          mv /mnt/swoole-cli-main318/*.linux-arm64.tar.xz file/
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
         with:
