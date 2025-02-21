@@ -1,0 +1,37 @@
+name: share ubuntu Template
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: 'Runner to use'
+        required: false
+        default: 'ubuntu-latest'
+        type: string
+    secrets:
+      CYM_TOKEN:
+        required: false
+
+jobs:
+  ubuntu-job:
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: complate swoole
+        run: |
+          sudo apt update
+          sh swoole/alpine318.sh
+      - name: move file
+        run: |
+          mkdir file
+          mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
+          mv /mnt/swoole-cli-main318/*.linux-x64.tar.xz file/
+      - name: Upload release asset
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.CYM_TOKEN }}
+          tag: v1
+          file_glob: true
+          overwrite: true
+          #release_name: v 自动发布
+          file: file/*
