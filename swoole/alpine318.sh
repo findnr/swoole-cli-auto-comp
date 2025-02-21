@@ -43,6 +43,6 @@ if docker ps -a --format "{{.Names}}" | grep -q "^${CONTAINER_NAME}$"; then
 else
   echo "容器 ${CONTAINER_NAME} 不存在，创建新容器并执行命令..."
   docker pull $BASE_IMAGE
-  docker run -dit --name $CONTAINER_NAME -v $WORK_DIR:/work $BASE_IMAGE /bin/sh
+  docker run --tty=false -dit --name $CONTAINER_NAME -v $WORK_DIR:/work $BASE_IMAGE /bin/sh
   docker exec -it $CONTAINER_NAME /bin/sh -c "$CONTAINER_COMMANDS"
 fi
