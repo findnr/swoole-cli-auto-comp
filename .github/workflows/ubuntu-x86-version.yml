@@ -1,0 +1,9 @@
+name: ubuntu-x86-version
+
+on:
+  workflow_dispatch:
+jobs:
+  job1:
+    uses: ./.github/workflows/share-ubuntu-version.yml
+    secrets: 
+      CYM_TOKEN: ${{ secrets.CYM_TOKEN }}
