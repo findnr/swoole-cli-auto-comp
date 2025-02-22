@@ -10,6 +10,7 @@ WORK_DIR="/mnt/${CONTAINER_NAME}"
 if [ ! -d "$WORK_DIR" ]; then
   echo "克隆 swoole-cli 仓库到 $WORK_DIR..."
   git clone https://github.com/swoole/swoole-cli.git $WORK_DIR
+  cd $WORK_DIR
   cd ext/swoole/
   git checkout v5.1.7.0
   cd $WORK_DIR
