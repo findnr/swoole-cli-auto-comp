@@ -1,4 +1,4 @@
-name: ubuntu-arm
+name: ubuntu-arm-version
 
 on:
   workflow_dispatch:
