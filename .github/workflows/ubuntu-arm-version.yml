@@ -1,0 +1,11 @@
+name: ubuntu-arm
+
+on:
+  workflow_dispatch:
+jobs:
+  job1:
+    uses: ./.github/workflows/share-ubuntu-version.yml
+    with:
+        runs-on: ubuntu-24.04-arm
+    secrets:
+      CYM_TOKEN: ${{ secrets.CYM_TOKEN }}
