@@ -18,6 +18,7 @@ if [ ! -d "$WORK_DIR" ]; then
 else
   sudo rm -rf $WORK_DIR
   git clone https://github.com/swoole/swoole-cli.git $WORK_DIR
+  cd $WORK_DIR
   cd ext/swoole/
   git checkout v5.1.7.0
   cd $WORK_DIR
